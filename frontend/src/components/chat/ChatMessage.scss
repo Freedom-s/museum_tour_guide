@@ -1,0 +1,139 @@
+.chat-message {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  animation: fadeIn 0.3s ease;
+
+  &.user {
+    flex-direction: row-reverse;
+
+    .message-content {
+      align-items: flex-end;
+    }
+
+    .message-text {
+      background: #1890ff;
+      color: white;
+      border-radius: 12px 12px 0 12px;
+    }
+  }
+
+  &.assistant {
+    .message-content {
+      align-items: flex-start;
+    }
+
+    .message-text {
+      background: #f5f5f5;
+      border-radius: 12px 12px 12px 0;
+    }
+  }
+
+  .message-avatar {
+    flex-shrink: 0;
+  }
+
+  .message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 70%;
+  }
+
+  .message-sender {
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-left: 4px;
+  }
+
+  .message-text {
+    padding: 10px 14px;
+    word-wrap: break-word;
+
+    p {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 8px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+
+    code {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+  }
+
+  .message-image {
+    img {
+      border-radius: 8px;
+    }
+  }
+
+  .message-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8c8c8c;
+    font-size: 14px;
+
+    &::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border: 2px solid #f0f0f0;
+      border-top-color: #1890ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  .artifact-card {
+    margin-top: 8px;
+    max-width: 400px;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .artifact-description {
+      margin-bottom: 12px;
+      color: #595959;
+      line-height: 1.6;
+    }
+
+    .artifact-images {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

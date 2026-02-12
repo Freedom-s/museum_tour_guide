@@ -1,0 +1,719 @@
+@import '../styles/theme.css';
+@import '../styles/animations.css';
+
+.artifact-upload-page {
+  min-height: 100vh;
+  background: var(--paper-white);
+}
+
+/* ==================== Page Header ==================== */
+.page-header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 40px;
+}
+
+.header-decoration {
+  margin-bottom: 20px;
+}
+
+.section-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.875rem;
+  color: var(--cinnabar);
+  letter-spacing: 0.5em;
+  padding: 8px 16px;
+  border: 1px solid var(--cinnabar);
+  display: inline-block;
+}
+
+.page-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 400;
+  color: var(--ink-black);
+  margin-bottom: 12px;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--ink-gray);
+}
+
+/* ==================== Upload Container ==================== */
+.upload-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 60px;
+}
+
+/* ==================== Form ==================== */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.label-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+  color: var(--bronze);
+  font-weight: 600;
+  min-width: 24px;
+}
+
+.label-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink-black);
+}
+
+.label-required {
+  margin-left: auto;
+  color: var(--cinnabar);
+  font-size: 0.875rem;
+}
+
+.label-optional {
+  margin-left: auto;
+  color: var(--ink-light);
+  font-size: 0.875rem;
+}
+
+/* Input 样式覆盖 */
+:deep(.ant-input) {
+  border-color: var(--border-color);
+  padding: 12px 16px;
+
+  &:hover {
+    border-color: var(--cobalt);
+  }
+
+  &:focus,
+  &.ant-input-focused {
+    border-color: var(--cobalt);
+    box-shadow: 0 0 0 2px rgba(42, 77, 127, 0.1);
+  }
+}
+
+/* ==================== Doc Uploader ==================== */
+.doc-uploader {
+  :deep(.ant-upload) {
+    border: 2px dashed var(--border-color) !important;
+    background: var(--paper-cream);
+    border-radius: 12px;
+    padding: 40px !important;
+    min-height: 160px;
+
+    &:hover {
+      border-color: var(--cobalt) !important;
+      background: var(--paper-white);
+    }
+  }
+}
+
+.doc-preview {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: var(--paper-cream);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.doc-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bronze);
+  border-radius: 8px;
+}
+
+.doc-icon-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+.doc-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doc-name {
+  font-weight: 500;
+  color: var(--ink-black);
+  font-size: 0.95rem;
+}
+
+.doc-size {
+  font-size: 0.8rem;
+  color: var(--ink-light);
+}
+
+.doc-remove {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--ink-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--cinnabar);
+    background: var(--cinnabar-light);
+    color: var(--cinnabar);
+  }
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.upload-icon-large {
+  font-size: 48px;
+  color: var(--cobalt);
+}
+
+.upload-text {
+  margin: 0;
+  color: var(--ink-black);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.upload-hint {
+  margin: 0;
+  color: var(--ink-light);
+  font-size: 0.875rem;
+}
+
+/* ==================== Image Uploader ==================== */
+.image-uploader {
+  :deep(.ant-upload-list) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+  }
+
+  :deep(.ant-upload-list-picture-card-container) {
+    display: none;
+  }
+}
+
+/* ==================== Upload Item Wrapper ==================== */
+.upload-item-wrapper {
+  position: relative;
+  cursor: pointer;
+
+  :deep(.ant-upload-list-item) {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    // 隐藏所有默认的 Ant Design 图标和遮罩
+    &::before {
+      display: none !important;
+    }
+
+    :deep(.ant-upload-list-item-actions) {
+      display: none !important;
+    }
+
+    :deep(.ant-upload-list-item-description) {
+      display: none !important;
+    }
+
+    :deep(.anticon-eye) {
+      display: none !important;
+    }
+
+    :deep(.anticon-delete) {
+      display: none !important;
+    }
+  }
+
+  :deep(.ant-upload-list-item-thumbnail) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* ==================== Delete Button ==================== */
+.upload-item-delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background: var(--cinnabar);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: #c82333;
+    transform: scale(1.1);
+  }
+}
+
+.upload-item-wrapper:hover .upload-item-delete-btn {
+  opacity: 1;
+}
+
+/* ==================== Empty State ==================== */
+.upload-empty-state {
+  :deep(.ant-upload-wrapper) {
+    min-height: 280px;
+  }
+}
+
+.upload-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  background: var(--paper-cream);
+  min-height: 280px;
+  transition: all 0.3s ease;
+}
+
+.upload-empty-icon {
+  font-size: 48px;
+  color: var(--cobalt);
+  margin-bottom: 16px;
+}
+
+.upload-empty-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--ink-black);
+  margin-bottom: 8px;
+}
+
+.upload-empty-hint {
+  font-size: 0.875rem;
+  color: var(--ink-light);
+  margin-bottom: 4px;
+}
+
+.upload-empty-limit {
+  font-size: 0.75rem;
+  color: var(--ink-gray);
+}
+
+/* ==================== Progress & Hints ==================== */
+.form-hint {
+  margin: 16px 0 0;
+  font-size: 0.875rem;
+  color: var(--ink-light);
+  text-align: center;
+}
+
+.upload-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--paper-warm);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--cinnabar);
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.progress-glow {
+  position: absolute;
+  inset: 0;
+  background: var(--cinnabar-light);
+  filter: blur(6px);
+  opacity: 0.6;
+}
+
+.progress-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cinnabar);
+  min-width: 100px;
+  text-align: right;
+}
+
+/* ==================== Sidebar ==================== */
+.upload-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sidebar-card {
+  background: var(--paper-cream);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.sidebar-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--ink-black);
+  margin-bottom: 16px;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    font-size: 0.9375rem;
+    color: var(--ink-gray);
+    line-height: 1.6;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--bronze);
+      font-weight: 600;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.upload-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 0;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--cinnabar);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--ink-light);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border-color);
+}
+
+/* ==================== Progress Ring ==================== */
+.progress-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 24px auto 0;
+}
+
+.progress-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bg {
+  stroke: var(--border-color);
+  stroke-width: 8;
+}
+
+.progress-bar-circle {
+  stroke: var(--cinnabar);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-text-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--cinnabar);
+}
+
+/* ==================== Service Status ==================== */
+.service-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--success-green);
+
+  &.status-ok {
+    background: var(--success-green);
+  }
+}
+
+.status-text {
+  font-size: 0.875rem;
+  color: var(--ink-gray);
+}
+
+/* ==================== Form Actions ==================== */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background: var(--ink-black);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: var(--cinnabar);
+      box-shadow: 0 6px 20px rgba(200, 48, 48, 0.25);
+    }
+  }
+
+  &.btn-secondary {
+    background: transparent;
+    color: var(--ink-black);
+    border: 1px solid var(--border-color);
+
+    &:hover:not(:disabled) {
+      border-color: var(--ink-black);
+      background: var(--ink-black);
+      color: white;
+    }
+  }
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 1200px) {
+  .upload-container {
+    grid-template-columns: 1fr;
+    padding: 0 24px 40px;
+  }
+
+  .upload-sidebar {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .sidebar-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 40px 24px 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .image-uploader :deep(.ant-upload-drag) {
+    min-height: 220px;
+  }
+
+  .upload-empty {
+    min-height: 220px;
+  }
+}
+
+/* ==================== Image Preview Modal ==================== */
+.image-preview-modal {
+  .ant-modal-content {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ant-modal-close {
+    color: white;
+    top: 16px;
+    right: 16px;
+
+    .ant-modal-close-x {
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      transition: background 0.2s ease;
+    }
+
+    &:hover .ant-modal-close-x {
+      background: var(--cinnabar);
+      color: white;
+    }
+  }
+}
+
+/* ==================== Custom Upload List Item ==================== */
+.ant-upload-list-item-container {
+  // 只对 transform 应用过渡，避免对 box-shadow 等属性应用过渡导致卡顿
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .ant-upload-list-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1;
+
+    &::before {
+      display: none !important;
+    }
+
+    // 隐藏眼睛和删除图标
+    .ant-upload-list-item-actions {
+      display: none !important;
+    }
+
+    .anticon-eye,
+    .anticon-delete {
+      display: none !important;
+    }
+  }
+
+  .ant-upload-list-item-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .ant-upload-list-item-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

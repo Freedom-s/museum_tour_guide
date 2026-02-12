@@ -1,0 +1,24 @@
+.image-uploader {
+  .ant-upload-list-picture-card-container {
+    width: 104px;
+    height: 104px;
+  }
+
+  .ant-upload-select-picture-card {
+    width: 104px;
+    height: 104px;
+  }
+
+  .ant-upload-list-item {
+    padding: 4px;
+  }
+
+  // 隐藏预览和删除图标
+  .ant-upload-list-item-actions {
+    display: none !important;
+  }
+
+  .ant-upload-list-item-thumbnail-wrapper {
+    cursor: default;
+  }
+}

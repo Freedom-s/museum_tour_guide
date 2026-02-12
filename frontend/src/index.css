@@ -1,0 +1,54 @@
+@import './styles/theme.css';
+@import './styles/animations.css';
+
+/* 全局重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--paper-white);
+  color: var(--ink-black);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Ant Design 样式覆盖 */
+.ant-layout {
+  background: transparent;
+}
+
+.ant-layout-header {
+  background: transparent;
+}
+
+.ant-layout-content {
+  background: transparent;
+}
+
+.ant-layout-footer {
+  background: transparent;
+}

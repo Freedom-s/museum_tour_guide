@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+/* 中国传统色彩系统 */
+:root {
+  /* 主色调 - 墨色系 */
+  --ink-black: #1a1a1a;
+  --ink-dark: #2d2d2d;
+  --ink-gray: #5a5a5a;
+  --ink-light: #8a8a8a;
+  --ink-pale: #c8c8c8;
+
+  /* 宣白色系 */
+  --paper-white: #f7f5f0;
+  --paper-cream: #f0ebe0;
+  --paper-warm: #e8e2d6;
+
+  /* 朱砂红 - 强调色 */
+  --cinnabar: #c83030;
+  --cinnabar-light: #e64545;
+  --cinnabar-dark: #a32525;
+
+  /* 古铜金 - 点缀色 */
+  --bronze: #b8860b;
+  --bronze-light: #d4a94d;
+  --bronze-dark: #8b6914;
+
+  /* 青花蓝 - 辅助色 */
+  --cobalt: #2a4d7f;
+  --cobalt-light: #4a7db5;
+  --cobalt-pale: #7a9dc5;
+
+  /* 玉石绿 - 辅助色 */
+  --jade: #5a7a6a;
+  --jade-light: #7a9a8a;
+  --jade-pale: #a8c8b8;
+
+  /* 间距系统 */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+
+  /* 字体大小 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* 边框 */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.04);
+}
+
+/* 全局样式重写 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--paper-white);
+  color: var(--ink-black);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* 标题字体 - 宋体风格 */
+h1, h2, h3, h4, h5, h6,
+.font-serif {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+}
+
+/* 水墨纹理背景 */
+.ink-wash-bg {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(42, 77, 127, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(200, 48, 48, 0.02) 0%, transparent 50%),
+    var(--paper-white);
+}
+
+/* 纸张纹理 */
+.paper-texture {
+  position: relative;
+  background-color: var(--paper-white);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* 印章效果 */
+.seal-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 2px solid var(--cinnabar);
+  color: var(--cinnabar);
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border-radius: 2px;
+  letter-spacing: 2px;
+}
+
+/* 印章圆形变体 */
+.seal-stamp-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 0.625rem;
+  padding: 0;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* 古籍边框 */
+.classic-border {
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.classic-border::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--border-light);
+  pointer-events: none;
+}
+
+/* 四角装饰 */
+.corner-decoration {
+  position: relative;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--bronze);
+  border-style: solid;
+}
+
+.corner-decoration::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.corner-decoration::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+/* 竖排文字 */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.25em;
+}
+
+/* 动画 */
+@keyframes inkSpread {
+  from {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  to {
+    clip-path: circle(100% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-ink-spread {
+  animation: inkSpread 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 延迟动画 */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+
+/* Ant Design 覆盖样式 */
+.ant-layout {
+  background: var(--paper-white);
+}
+
+.ant-layout-header {
+  background: rgba(247, 245, 240, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ant-menu {
+  background: transparent;
+  border: none;
+}
+
+.ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.ant-menu-item {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--ink-gray);
+  padding: 0 1.5rem !important;
+}
+
+.ant-menu-item:hover {
+  color: var(--cinnabar);
+}
+
+.ant-menu-item-selected {
+  color: var(--cinnabar) !important;
+  border-bottom: 2px solid var(--cinnabar) !important;
+}
+
+.ant-btn-primary {
+  background: var(--ink-black);
+  border-color: var(--ink-black);
+  color: white;
+  font-weight: 500;
+}
+
+.ant-btn-primary:hover {
+  background: var(--cinnabar);
+  border-color: var(--cinnabar);
+}
+
+.ant-card {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.ant-input,
+.ant-input:focus,
+.ant-input-focused {
+  border-color: var(--border-color);
+  box-shadow: none;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: var(--cobalt);
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-pale);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-light);
+}

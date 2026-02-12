@@ -1,0 +1,24 @@
+.page-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &-extra {
+    flex-shrink: 0;
+  }
+
+  .ant-typography {
+    margin-bottom: 0;
+  }
+
+  h2.ant-typography {
+    margin-bottom: 8px;
+  }
+}
